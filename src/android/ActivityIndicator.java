@@ -33,7 +33,7 @@ public class ActivityIndicator extends CordovaPlugin {
 	 * This show the ProgressDialog
 	 * @param text - Message to display in the Progress Dialog
 	 */
-	public void show(String text, Boolean ) {
+	public void show(String text, Boolean cancelable) {
 		this.text = text;
 		this.cancelable = cancelable;
 
