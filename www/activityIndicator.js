@@ -1,9 +1,11 @@
 var ActivityIndicator = {
-    show: function (_text, _cancelable) {
+    show: function (_text, _cancelable, _success, _error) {
     	var text = _text || "Carregando...",
-    		cancelable = _cancelable || false;
+    		cancelable = _cancelable || false,
+    		success = _success|| function(){},
+    		error = _error || function(){};
 
-        cordova.exec(null, null, "ActivityIndicator", "show", [text, cancelable]);
+        cordova.exec(success, error, "ActivityIndicator", "show", [text, cancelable]);
     },
     hide: function () {
         cordova.exec(null, null, "ActivityIndicator", "hide", []);

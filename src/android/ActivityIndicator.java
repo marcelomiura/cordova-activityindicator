@@ -17,8 +17,8 @@ public class ActivityIndicator extends CordovaPlugin {
 		if (action.equals("show")) {
 			String text = args.getString(0);
 			Boolean cancelable = Boolean.parseBoolean(args.getString(1));
-			show(text, cancelable);
-			callbackContext.success();
+			show(text, cancelable, callbackContext);
+			// callbackContext.success();
 			return true;
 		} else if (action.equals("hide")) {
 			hide();
@@ -33,13 +33,15 @@ public class ActivityIndicator extends CordovaPlugin {
 	 * This show the ProgressDialog
 	 * @param text - Message to display in the Progress Dialog
 	 */
-	public void show(String text, Boolean cancelable) {
+	public void show(String text, Boolean cancelable, CallbackContext callbackContext) {
 		this.text = text;
 		this.cancelable = cancelable;
+		this.callbackContext = callbackContext;
 
 		cordova.getActivity().runOnUiThread(new Runnable() {
 			public void run() {
 				activityIndicator = AndroidProgressHUD.show(ActivityIndicator.this.cordova.getActivity(), ActivityIndicator.this.text, true, ActivityIndicator.this.cancelable, null);
+				this.callbackContext.success();
 			}
 		});
 	}
