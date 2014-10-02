@@ -11,6 +11,7 @@ public class ActivityIndicator extends CordovaPlugin {
 	private AndroidProgressHUD activityIndicator = null;
 	private String text = null;
 	private Boolean cancelable = null;
+	private CallbackContext callbackContext = null;
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
